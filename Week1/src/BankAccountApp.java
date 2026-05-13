@@ -6,7 +6,7 @@ class BankAccount {
     //fields- what does the private access specifier mean and what does it ensure?
     //they 'define' the 'look' of the object, its data. Data is usually private and is not accessible outside the object
     //what are getter and setter methods?
-    private String owner;
+    private final String owner;
     private double balance;
 
     // Constructor, the 'method' to create objects of this class
@@ -38,7 +38,8 @@ class BankAccount {
 
     // 4. Method with multiple parameters
     public void transfer(BankAccount target, double amount) {
-        if (this.withdraw(amount)) {
+        // target used to be "this"
+        if (target.withdraw(amount)) {
             target.deposit(amount);
             System.out.println("Transfer successful!");
         } else {
